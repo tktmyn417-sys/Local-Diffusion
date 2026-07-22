@@ -1,31 +1,24 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'dart:ui' as ui;
 import 'dart:async';
 import 'dart:developer' as developer;
-import 'package:permission_handler/permission_handler.dart'; // Added
+import 'package:permission_handler/permission_handler.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:file_picker/file_picker.dart';
 import 'ffi_bindings.dart';
-import 'inpainting_page.dart';
 import 'stable_diffusion_processor.dart';
-import 'upscaler_page.dart';
 import 'img2img_page.dart';
-import 'photomaker_page.dart';
 import 'package:image/image.dart' as img;
 import 'canny_processor.dart';
-import 'scribble2img_page.dart';
-import 'outpainting_page.dart';
-import 'image_processing_utils.dart'; // Import the new utility
+import 'image_processing_utils.dart';
 
 void main() {
-  // Ensure Flutter bindings are initialized
+  assert(Platform.isAndroid, 'This app is built for Android only.');
   WidgetsFlutterBinding.ensureInitialized();
-  // Initialize FFI bindings with the default backend BEFORE running the app
-  FFIBindings.initializeBindings('CPU');
+  final preferredBackend = resolvePreferredBackend('CPU');
+  FFIBindings.initializeBindings(preferredBackend);
   runApp(const MyApp());
 }
 
@@ -287,7 +280,7 @@ class _StableDiffusionAppState extends State<StableDiffusionApp>
   List<String> _generationLogs = []; // To store logs for the last generation
   bool _showLogsButton = false; // To control visibility of the log button
   bool _isDiffusionModelType = false; // Added state for the new switch
-  String _selectedBackend = 'CPU'; // State for the selected backend
+  String _selectedBackend = 'Vulkan'; // Prefer Vulkan on Android
   final List<String> _availableBackends = [
     'CPU',
     'Vulkan',
@@ -1084,91 +1077,6 @@ class _StableDiffusionAppState extends State<StableDiffusionApp>
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const Img2ImgPage()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(LucideIcons.imageUpscale, size: 32),
-              title: const Text(
-                'Upscaler',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              onTap: () {
-                if (_processor != null) {
-                  _processor!.dispose();
-                  _processor = null;
-                }
-                Navigator.pop(context);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const UpscalerPage()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(LucideIcons.aperture, size: 32),
-              title: const Text('Photomaker',
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              onTap: () {
-                if (_processor != null) {
-                  _processor!.dispose();
-                  _processor = null;
-                }
-                Navigator.pop(context);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const PhotomakerPage()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.draw, size: 32),
-              title: const Text('Scribble to Image',
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              onTap: () {
-                if (_processor != null) {
-                  _processor!.dispose();
-                  _processor = null;
-                }
-                Navigator.pop(context);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ScribblePage()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(LucideIcons.palette, size: 32),
-              title: const Text('Inpainting',
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              onTap: () {
-                if (_processor != null) {
-                  _processor!.dispose();
-                  _processor = null;
-                }
-                Navigator.pop(context);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const InpaintingPage()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(LucideIcons.expand, size: 32),
-              title: const Text('Outpainting',
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              onTap: () {
-                if (_processor != null) {
-                  _processor!.dispose();
-                  _processor = null;
-                }
-                Navigator.pop(context);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const OutpaintingPage()),
                 );
               },
             ),
@@ -2522,11 +2430,15 @@ class _StableDiffusionAppState extends State<StableDiffusionApp>
               key: _promptFieldKey,
               placeholder: const Text('Prompt'),
               controller: _promptController,
+              maxLines: null,
+              minLines: 3,
               onChanged: (String? v) => setState(() => prompt = v ?? ''),
             ),
             const SizedBox(height: 16),
             ShadInput(
               placeholder: const Text('Negative Prompt'),
+              maxLines: null,
+              minLines: 2,
               onChanged: (String? v) =>
                   setState(() => negativePrompt = v ?? ''),
             ),
@@ -3440,9 +3352,13 @@ class _StableDiffusionAppState extends State<StableDiffusionApp>
                     }
                     // --- End Skip Layers Formatting ---
 
+                    final normalizedPrompt = normalizePromptForGeneration(prompt);
+                    final normalizedNegativePrompt =
+                        normalizePromptForGeneration(negativePrompt);
+
                     _processor!.generateImage(
-                      prompt: prompt,
-                      negativePrompt: negativePrompt,
+                      prompt: normalizedPrompt,
+                      negativePrompt: normalizedNegativePrompt,
                       cfgScale: cfg,
                       sampleSteps: steps,
                       width: width,

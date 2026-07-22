@@ -1,17 +1,18 @@
-import 'dart:io';
-import 'dart:ui' as ui;
-import 'dart:async';
-import 'dart:typed_data';
-import 'dart:developer' as developer;
-import 'dart:math' as math; // Import dart:math
+// Android-only build: this page is intentionally disabled to reduce app size.
+// import 'dart:io';
+// import 'dart:ui' as ui;
+// import 'dart:async';
+// import 'dart:typed_data';
+// import 'dart:developer' as developer;
+// import 'dart:math' as math;
 
-import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:image/image.dart' as img;
-import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+// import 'package:flutter/material.dart';
+// import 'package:shadcn_ui/shadcn_ui.dart';
+// import 'package:file_picker/file_picker.dart';
+// import 'package:image_picker/image_picker.dart';
+// import 'package:image/image.dart' as img;
+// import 'package:dotted_border/dotted_border.dart';
+// import 'package:flutter_animate/flutter_animate.dart';
 
 import 'canny_processor.dart';
 import 'ffi_bindings.dart';

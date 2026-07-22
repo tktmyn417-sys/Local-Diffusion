@@ -9,9 +9,6 @@
         android:name="${applicationName}"
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
-        <uses-native-library
-            android:name="libOpenCL.so"
-            android:required="false" />        
         <activity
             android:name=".MainActivity"
             android:exported="true"

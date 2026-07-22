@@ -1,3 +1,4 @@
+import 'dart:io' show Platform;
 import 'dart:math';
 
 String generateRandomSequence(int length) {
@@ -16,4 +17,20 @@ String sanitizePrompt(String prompt) {
       .replaceAll(RegExp(r'[^\w\s-]'), '')
       .trim()
       .replaceAll(RegExp(r'\s+'), '_');
+}
+
+String normalizePromptForGeneration(String prompt) {
+  if (prompt.isEmpty) return prompt;
+
+  return prompt
+      .replaceAll('\r\n', '\n')
+      .replaceAll('\r', '\n')
+      .trim();
+}
+
+String resolvePreferredBackend(String requestedBackend) {
+  if (Platform.isAndroid && requestedBackend == 'CPU') {
+    return 'Vulkan';
+  }
+  return requestedBackend;
 }

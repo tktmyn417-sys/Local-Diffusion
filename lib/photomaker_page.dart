@@ -1,23 +1,24 @@
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
-import 'dart:async';
-import 'dart:developer' as developer;
-import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'ffi_bindings.dart';
-import 'inpainting_page.dart';
-import 'outpainting_page.dart';
-import 'scribble2img_page.dart';
-import 'stable_diffusion_processor.dart';
-import 'utils.dart';
-import 'main.dart';
-import 'img2img_page.dart';
-import 'upscaler_page.dart';
+// Android-only build: this page is intentionally disabled to reduce app size.
+// import 'dart:io';
+// import 'package:flutter/material.dart';
+// import 'dart:ui' as ui;
+// import 'dart:async';
+// import 'dart:developer' as developer;
+// import 'package:shadcn_ui/shadcn_ui.dart';
+// import 'package:file_picker/file_picker.dart';
+// import 'package:image_picker/image_picker.dart';
+// import 'package:path_provider/path_provider.dart';
+// import 'package:dotted_border/dotted_border.dart';
+// import 'package:flutter_animate/flutter_animate.dart';
+// import 'ffi_bindings.dart';
+// import 'inpainting_page.dart';
+// import 'outpainting_page.dart';
+// import 'scribble2img_page.dart';
+// import 'stable_diffusion_processor.dart';
+// import 'utils.dart';
+// import 'main.dart';
+// import 'img2img_page.dart';
+// import 'upscaler_page.dart';
 
 class PhotomakerPage extends StatefulWidget {
   const PhotomakerPage({super.key});

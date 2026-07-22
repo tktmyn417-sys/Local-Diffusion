@@ -13,7 +13,7 @@
 </p>
 <br>
 
-Local Diffusion is a Flutter application that brings Diffusion models to Android, powered by the amazing stable-diffusion.cpp
+Local Diffusion is a lightweight Android-only Flutter app for running local diffusion inference on devices such as MediaTek Dimensity 8400 Ultra with 12GB+ RAM, powered by stable-diffusion.cpp.
 
 ## Download
 
@@ -23,7 +23,7 @@ Download and install the latest `.apk` from the GitHub Releases page:
 
 ## ✨ Key Features
 
--   **📱 Truly Local Inference:** Generate images entirely on your Android device.
+-   **📱 Truly Local Inference:** Generate images entirely on your Android device with no cloud dependency.
     
 -   **🚀 Broad Model Compatibility:**
     
@@ -62,9 +62,9 @@ Download and install the latest `.apk` from the GitHub Releases page:
         
     -   **Multiple Sampling Methods:** Euler A, Euler, Heun, DPM2, DPM++ 2M, DPM++ 2M v2, DPM++ 2S a, LCM, TCD, DDIM
         
--   **💻 GPU Acceleration (Experimental):**
+-   **💻 GPU Acceleration (Android-focused):**
     
-    -   **Vulkan:** Currently performs ~2x slower than CPU. Performance improvements are planned.
+    -   **Vulkan:** Preferred on Android devices with compatible GPU drivers, including Dimensity-class hardware.
         
     -   **OpenCL:** Only supports Adreno 7xx GPUs for now. Optimized for Q4_0 quantization; also supports Q8_0 and FP16. Operations or devices outside these specifics may fall back to CPU execution.
         

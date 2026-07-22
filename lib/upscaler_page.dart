@@ -1,23 +1,24 @@
-import 'dart:io';
-import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:typed_data';
-import 'package:file_picker/file_picker.dart';
-import 'package:image/image.dart' as img;
-import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:gal/gal.dart';
-import 'ffi_bindings.dart';
-import 'inpainting_page.dart';
-import 'outpainting_page.dart';
-import 'scribble2img_page.dart';
-import 'upscaler_processor.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:dotted_border/dotted_border.dart';
-import 'package:before_after/before_after.dart';
-import 'img2img_page.dart';
-import 'main.dart';
-import 'photomaker_page.dart';
+// Android-only build: this page is intentionally disabled to reduce app size.
+// import 'dart:io';
+// import 'dart:async';
+// import 'package:flutter/material.dart';
+// import 'package:image_picker/image_picker.dart';
+// import 'dart:typed_data';
+// import 'package:file_picker/file_picker.dart';
+// import 'package:image/image.dart' as img;
+// import 'package:shadcn_ui/shadcn_ui.dart';
+// import 'package:gal/gal.dart';
+// import 'ffi_bindings.dart';
+// import 'inpainting_page.dart';
+// import 'outpainting_page.dart';
+// import 'scribble2img_page.dart';
+// import 'upscaler_processor.dart';
+// import 'package:path_provider/path_provider.dart';
+// import 'package:dotted_border/dotted_border.dart';
+// import 'package:before_after/before_after.dart';
+// import 'img2img_page.dart';
+// import 'main.dart';
+// import 'photomaker_page.dart';
 
 class UpscalerPage extends StatefulWidget {
   const UpscalerPage({super.key});

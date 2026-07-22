@@ -1,29 +1,30 @@
-import 'dart:io';
-import 'dart:ui' as ui;
-import 'dart:async';
-import 'dart:typed_data';
-import 'dart:developer' as developer;
-
-import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:image/image.dart' as img;
-import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-
-import 'canny_processor.dart'; // Kept in case needed for controlnet later
-import 'ffi_bindings.dart';
-import 'img2img_page.dart';
-import 'img2img_processor.dart';
-import 'scribble2img_page.dart';
-import 'utils.dart';
-import 'main.dart';
-import 'upscaler_page.dart';
-import 'photomaker_page.dart';
-import 'inpainting_page.dart';
-import 'image_processing_utils.dart'; // Import the image processing utils
-// import 'mask_editor.dart'; // Not directly needed for mask creation anymore
+// Android-only build: this page is intentionally disabled to reduce app size.
+// import 'dart:io';
+// import 'dart:ui' as ui;
+// import 'dart:async';
+// import 'dart:typed_data';
+// import 'dart:developer' as developer;
+//
+// import 'package:flutter/material.dart';
+// import 'package:shadcn_ui/shadcn_ui.dart';
+// import 'package:file_picker/file_picker.dart';
+// import 'package:image_picker/image_picker.dart';
+// import 'package:image/image.dart' as img;
+// import 'package:dotted_border/dotted_border.dart';
+// import 'package:flutter_animate/flutter_animate.dart';
+//
+// import 'canny_processor.dart'; // Kept in case needed for controlnet later
+// import 'ffi_bindings.dart';
+// import 'img2img_page.dart';
+// import 'img2img_processor.dart';
+// import 'scribble2img_page.dart';
+// import 'utils.dart';
+// import 'main.dart';
+// import 'upscaler_page.dart';
+// import 'photomaker_page.dart';
+// import 'inpainting_page.dart';
+// import 'image_processing_utils.dart'; // Import the image processing utils
+// // import 'mask_editor.dart'; // Not directly needed for mask creation anymore
 
 class OutpaintingPage extends StatefulWidget {
   const OutpaintingPage({super.key});

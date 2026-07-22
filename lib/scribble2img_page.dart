@@ -1,27 +1,28 @@
-import 'dart:io';
-import 'dart:typed_data';
-import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
-import 'dart:async';
-import 'dart:developer' as developer;
-import 'dart:math' as math; // Import dart:math
-import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'ffi_bindings.dart';
-import 'inpainting_page.dart';
-import 'outpainting_page.dart';
-import 'photomaker_page.dart';
-import 'stable_diffusion_processor.dart';
-import 'utils.dart';
-import 'main.dart';
-import 'img2img_page.dart'; // Keep for reference if needed, but logic is being copied
-import 'upscaler_page.dart';
-import 'package:flutter_drawing_board/flutter_drawing_board.dart';
-import 'package:image/image.dart' as img;
-import 'image_processing_utils.dart'; // Import for CroppedImageData and InvertedRectClipper
+// Android-only build: this page is intentionally disabled to reduce app size.
+// import 'dart:io';
+// import 'dart:typed_data';
+// import 'package:flutter/material.dart';
+// import 'dart:ui' as ui;
+// import 'dart:async';
+// import 'dart:developer' as developer;
+// import 'dart:math' as math; // Import dart:math
+// import 'package:shadcn_ui/shadcn_ui.dart';
+// import 'package:file_picker/file_picker.dart';
+// import 'package:path_provider/path_provider.dart';
+// import 'package:dotted_border/dotted_border.dart';
+// import 'package:flutter_animate/flutter_animate.dart';
+// import 'ffi_bindings.dart';
+// import 'inpainting_page.dart';
+// import 'outpainting_page.dart';
+// import 'photomaker_page.dart';
+// import 'stable_diffusion_processor.dart';
+// import 'utils.dart';
+// import 'main.dart';
+// import 'img2img_page.dart'; // Keep for reference if needed, but logic is being copied
+// import 'upscaler_page.dart';
+// import 'package:flutter_drawing_board/flutter_drawing_board.dart';
+// import 'package:image/image.dart' as img;
+// import 'image_processing_utils.dart'; // Import for CroppedImageData and InvertedRectClipper
 
 class ScribblePage extends StatefulWidget {
   const ScribblePage({super.key});
