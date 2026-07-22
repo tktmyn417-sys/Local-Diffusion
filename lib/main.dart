@@ -13,6 +13,7 @@ import 'img2img_page.dart';
 import 'package:image/image.dart' as img;
 import 'canny_processor.dart';
 import 'image_processing_utils.dart';
+import 'utils.dart';
 
 void main() {
   assert(Platform.isAndroid, 'This app is built for Android only.');
